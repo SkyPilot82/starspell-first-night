@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>STARSPELL · THE FIRST NIGHT — the first five minutes</title>
+<style>
+  :root{
+    --bg:#0a0e1f; --card:#121732; --line:#232a52; --gold:#e8c76a; --dim:#8a94c4;
+    --ink:#dfe5ff; --violet:#b9a6ff; --teal:#2fe0d0; --rose:#e06a7a; --dew:#7de8a0;
+  }
+  *{box-sizing:border-box; min-width:0}
+  body{background:var(--bg); color:var(--ink); font:16px/1.62 Georgia,'Times New Roman',serif;
+       margin:0; padding:0 18px 90px;}
+  .wrap{max-width:920px; margin:0 auto;}
+  .crumb{padding-top:50px; color:var(--dim); font-size:12.5px; letter-spacing:.24em; text-transform:uppercase;}
+  h1{color:var(--gold); font-size:38px; font-weight:normal; margin:10px 0 10px; letter-spacing:.03em; text-wrap:balance;}
+  .sub{color:var(--dim); font-size:15px; max-width:70ch; margin:0 0 18px; font-style:italic;}
+  .sub b,.note b{color:var(--gold); font-weight:normal;}
+  .sub a,.note a{color:var(--gold);}
+  h2{color:var(--gold); font-size:19px; font-weight:normal; letter-spacing:.14em; text-transform:uppercase;
+     margin:56px 0 6px; border-top:1px solid var(--line); padding-top:26px;}
+  h3{color:var(--ink); font-size:16px; font-weight:normal; letter-spacing:.08em; margin:26px 0 6px;}
+  p{max-width:72ch;}
+  .note{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 20px; margin:18px 0; font-size:14.5px;}
+  .note i{color:var(--ink);}
+  .lede{max-width:72ch;}
+  .lede b{color:var(--gold); font-weight:normal;}
+
+  /* concept header chips */
+  .scorerow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 14px;}
+  .sc{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--line);
+      border-radius:20px; padding:3px 12px; color:var(--dim); background:#0d1228;}
+  .sc b{font-weight:normal; color:var(--ink);}
+  .sc.good b{color:var(--dew);} .sc.warn b{color:#ffb457;} .sc.gold b{color:var(--gold);}
+  .tagline{color:var(--violet); font-style:italic; margin:-2px 0 10px; font-size:15px;}
+
+  /* timeline strip */
+  .tl{margin:14px 0 6px;}
+  .tl svg{display:block; width:100%; height:auto;}
+  .tlleg{color:var(--dim); font-size:11.5px; letter-spacing:.1em; margin:4px 0 0;}
+  .tlleg span{display:inline-block; width:10px; height:10px; border-radius:2px; vertical-align:-1px; margin:0 5px 0 14px;}
+  .tlleg span:first-child{margin-left:0}
+
+  /* beats */
+  .beats{list-style:none; margin:14px 0; padding:0; max-width:78ch;}
+  .beats li{margin:7px 0; padding-left:0; font-size:14.5px;}
+  .beats .t{color:var(--gold); font-variant-numeric:tabular-nums; margin-right:6px;}
+  .beats .m{font-size:10px; letter-spacing:.12em; border-radius:4px; padding:1px 6px; margin-right:7px; vertical-align:1px;}
+  .m.s{color:var(--violet); border:1px solid var(--violet);}
+  .m.g{color:var(--gold); border:1px solid var(--gold);}
+  .m.f{color:var(--teal); border:1px solid var(--teal);}
+
+  /* mock + text two-up */
+  .duo{display:grid; grid-template-columns:300px 1fr; gap:26px; align-items:start; margin:18px 0;}
+  @media (max-width:680px){ .duo{grid-template-columns:1fr;} }
+  .mock{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:10px;}
+  .mock svg{display:block; width:100%; height:auto; border-radius:8px;}
+  .mocklabel{color:var(--dim); font-size:12px; letter-spacing:.16em; text-transform:uppercase; margin:8px 2px 2px; text-align:center;}
+
+  .sig{margin:10px 0; padding:0 0 0 1.1em; max-width:74ch;}
+  .sig li{margin:8px 0; font-size:14.5px;}
+  .sig b{color:var(--gold); font-weight:normal;}
+
+  /* critics block */
+  .crit{background:#0d1228; border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:16px 0; font-size:14px; max-width:none;}
+  .crit .vh{color:var(--dim); font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin:10px 0 4px;}
+  .crit .vh:first-child{margin-top:0}
+  .crit q{color:var(--ink); quotes:'“' '”';}
+  .crit ul{margin:4px 0; padding-left:1.1em;}
+  .crit li{margin:4px 0;}
+  .crit .flag{color:#ffb457;}
+  .crit .fix b{color:var(--dew); font-weight:normal;}
+
+  /* shots */
+  .shots{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:16px 0;}
+  @media (max-width:680px){ .shots{grid-template-columns:repeat(2,1fr);} }
+  .shots figure{margin:0;}
+  .shots img{display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--line);}
+  .shots figcaption{color:var(--dim); font-size:11.5px; letter-spacing:.08em; margin-top:6px; text-align:center;}
+
+  table{border-collapse:collapse; font-size:13.5px; margin:14px 0; width:100%;}
+  th{color:var(--dim); font-weight:normal; text-align:left; letter-spacing:.1em; text-transform:uppercase; font-size:10.5px;
+     border-bottom:1px solid var(--line); padding:6px 10px 6px 0;}
+  td{border-bottom:1px solid #1a2040; padding:7px 10px 7px 0; vertical-align:top;}
+  td b{color:var(--gold); font-weight:normal;}
+  .tablewrap{overflow-x:auto;}
+  .num{font-variant-numeric:tabular-nums;}
+
+  /* verdict machinery */
+  .q{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:14px 0;}
+  .q .qt{color:var(--ink); font-size:15px; letter-spacing:.06em;}
+  .q .qt b{color:var(--gold); font-weight:normal;}
+  .q .qd{color:var(--dim); font-size:13.5px; margin:6px 0 10px;}
+  .chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{cursor:pointer; border:1px solid var(--line); background:#0d1228; color:var(--dim); border-radius:99px; padding:5px 14px; font:12.5px Georgia,serif; letter-spacing:.06em;}
+  .chip.on{border-color:var(--gold); color:var(--gold); box-shadow:0 0 10px rgba(232,199,106,.25);}
+  .qnote{width:100%; margin-top:10px; background:#0d1228; border:1px solid var(--line); border-radius:8px; color:var(--ink); padding:7px 10px; font:14px Georgia,serif;}
+
+  footer{margin-top:60px; border-top:1px solid var(--line); padding-top:16px; color:#5b6494; font-size:12.5px; font-style:italic;}
+
+  .bar{position:fixed; bottom:0; left:0; right:0; background:#0d1228ee; border-top:1px solid var(--line); padding:10px 16px;
+       display:flex; gap:12px; align-items:center; backdrop-filter:blur(6px); flex-wrap:wrap; z-index:9;}
+  .bar .cnt{font-size:13px; color:var(--ink); white-space:nowrap;}
+  .bar .cnt b{color:var(--gold); font-weight:normal;}
+  .barnote{flex:1 1 160px; color:#5b6494; font-size:11.5px; font-style:italic;}
+  .copy{cursor:pointer; border:1px solid var(--gold); background:var(--gold); color:#0a0e1f; border-radius:99px; padding:7px 18px; font:13px Georgia,serif; letter-spacing:.1em;}
+  .copied{color:#7de8a0; font-size:12.5px; min-width:70px;}
+  @media (max-width:620px){ body{padding-bottom:180px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb">STARSPELL · DESIGN REVIEW · 2026-10-02 · THE FIRST-OPEN LINE</div>
+  <h1>THE FIRST NIGHT</h1>
+  <p class="sub">Six ways to make the first five minutes of a stranger's life in STARSPELL the reason they come
+  back tomorrow. Every concept drops the player <b>straight into a game</b>, scripts the opening, hides the seam
+  where the script lets go, and teaches the rules by doing — then each one was attacked by two critics: a cold-player
+  advocate and a feasibility judge who verified every claim against the shipping code (v0.111.1, HEAD 8896ac8b).
+  This page is the next rev of the first-open line — <b>v0.75.0 THE FIRST OPEN</b>, your 9/2 wordless ride, stays the skeleton everywhere it deserves to.</p>
+
+  <div class="note"><b>Skylar's ask, verbatim (10/2):</b> <i>"We need to design a tutorial for the game that will also be
+  the first thing a new player sees when they launch the game for the first time. A very important part of this tutorial,
+  or the start of the game for a new player, is that it really needs to hook people in the first 5 minutes of the game.
+  That's what's going to get them to come back and keep playing the game. I need you to build a design page on a Sky Pilot
+  GitHub page and give me ideas on how we can make the first 5 minutes of a new player's experience of the game amazing.
+  We want to hook them into the game so that they'll continue playing while also explaining the rules of the game. This
+  first game they play should put them right into a game, and it should be scripted so that we can guide them where we
+  want. At some point, maybe unscripted, but we need some cool animations and whatnot. I want you to put this in the
+  design page with multiple different ideas so I can look at it and really see what would be a great hook in those 5
+  minutes. We can build it into the game after I check out the design page."</i><br><br>
+  <b>How to rule:</b> read section I (what five minutes buy today), walk the six concepts, then tap a chip on each
+  numbered question at the bottom and COPY VERDICTS back to the console. Nothing here is built.</div>
+
+  <h2>I · What five minutes buy today</h2>
+  <p class="lede">The shipped first open is already good — and already yours: a wordless bare meadow, the wordmark
+  condensing from stardust, an auto-rise nobody is asked to tap, a curated board where a painted hand walks
+  <b>S·T·A·R</b> against a star-beast. These are real captures from this morning (headless Chrome at DPR 3, fresh
+  profile, Firebase blocked, live v0.111.1 bytes):</p>
+
+  <div class="shots">
+    <figure><img src="shots/today-1-zenith.jpg" alt="The dark zenith a cold boot opens on"><figcaption>0:00 · the dark zenith</figcaption></figure>
+    <figure><img src="shots/today-2-condense.jpg" alt="The STARSPELL wordmark condensed from stardust at the zenith"><figcaption>the condense</figcaption></figure>
+    <figure><img src="shots/today-3-meadow.jpg" alt="The settled wordless meadow — logo over painted dusk, zero UI"><figcaption>the wordless meadow</figcaption></figure>
+    <figure><img src="shots/today-4-hand.jpg" alt="The first board: CYGNUS above, the hand pointing at S on the curated STAR deal"><figcaption>the hand at S</figcaption></figure>
+  </div>
+
+  <p class="lede">Five code-verified facts that frame everything below:</p>
+  <ul class="sig">
+    <li><b>The whole opening is silent.</b> WebAudio cannot start before a user gesture, and the first open never asks
+    for one — the intro, the riser and the arrival chime (the prettiest sound in the game) have been inaudible for every
+    new player in the game's history. The first sound a stranger ever hears is their first tile tap.</li>
+    <li><b>Fight 1 is a dice roll.</b> The board is curated; the beast is not — a uniform draw across 13 beasts spanning
+    VULPES (30&nbsp;hp, atk&nbsp;8) to URSA (76&nbsp;hp, atk&nbsp;14). The difficulty of minutes 2–4 is a 2.5× coin flip.
+    Every concept below pins it; all six designers arrived there independently.</li>
+    <li><b>The hand teaches two of the seven minute-one rules</b> (weave, cast) and retires forever at the first cast.
+    The fuse, HP, dew, refills, SCRY — all learned by being surprised.</li>
+    <li><b>At 5:00 the typical player is 20–40% through the run</b> — standing at the first sigil pick or a minute into
+    fight 2. The full first run takes 8–15 minutes, ends at DRACO (a real wall for a one-sigil newcomer), and only at its
+    end does the player meet the meadow chrome, the daily chip, the first question of any kind. Every tomorrow-driver the
+    game owns currently lives past minute eight.</li>
+    <li><b>The first game evaporates.</b> Quick runs never checkpoint; a pocketed phone mid-run replays the whole first
+    open onto nothing. The players most likely to churn — interrupted commuters — are structurally guaranteed to lose
+    their progress.</li>
+  </ul>
+
+  <!-- ====================== CONCEPT II ====================== -->
+  <h2>II · The Sky Strikes First</h2>
+  <p class="tagline">no menu, no meadow, no name — a beast draws first blood, and the title card is the trophy for your first kill</p>
+  <div class="scorerow">
+    <span class="sc">player <b>7</b></span><span class="sc">feasibility <b>7</b></span>
+    <span class="sc warn">size M claimed → <b>L verified</b></span><span class="sc good">new strings <b>0</b></span>
+  </div>
+  <p class="lede">The game refuses to introduce itself. Frame one is the battle zenith at speed — star streaks
+  decelerating to stillness — and VULPES assembles <i>already charged</i>. It pounces before the board exists: a crimson
+  −8 breathes at the point of contact and flies to a health bar that fades in just in time to catch it. The board rains
+  in as the answer. The hand walks STAR; the first strike you <i>saw coming</i> lands at 1:10 — ambush, then prediction,
+  the fuse taught as a two-beat story. And when the fox dies, its scattered stars curve back and <b>condense into the
+  gold STARSPELL wordmark</b> — the game says its own name only because you made it. The meadow is withheld for the whole
+  session: at run's end the descent reveals THE FIRST EARTH — a world you never knew had a floor, crickets heard for the
+  first time, the daily chip already counting.</p>
+
+  <div class="tl" data-tl="cold"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the pounce before the board exists">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <g fill="#cfd8ff"><circle cx="40" cy="80" r="1.4" opacity=".7"/><circle cx="120" cy="40" r="1" opacity=".5"/><circle cx="300" cy="70" r="1.6" opacity=".8"/><circle cx="350" cy="140" r="1" opacity=".5"/><circle cx="70" cy="190" r="1.2" opacity=".6"/><circle cx="330" cy="260" r="1.2" opacity=".5"/><circle cx="180" cy="120" r="1" opacity=".4"/><circle cx="250" cy="180" r="1.3" opacity=".6"/><circle cx="90" cy="320" r="1" opacity=".4"/><circle cx="310" cy="380" r="1" opacity=".4"/><circle cx="60" cy="600" r="1" opacity=".35"/><circle cx="330" cy="640" r="1.2" opacity=".4"/><circle cx="150" cy="700" r="1" opacity=".3"/><circle cx="240" cy="760" r="1" opacity=".35"/></g>
+          <rect x="0" y="0" width="390" height="844" rx="18" fill="none" stroke="#b03a4a" stroke-width="10" opacity=".18"/>
+          <rect x="24" y="36" width="150" height="13" rx="6.5" fill="#1a2040"/><rect x="24" y="36" width="126" height="13" rx="6.5" fill="#d7b45c"/>
+          <rect x="149" y="39" width="26" height="7" rx="3.5" fill="#efe3c0" opacity=".35"/>
+          <text x="24" y="28" font-size="12" fill="#c9b676" letter-spacing="2">YOU</text>
+          <text x="186" y="47" font-size="12" fill="#dfe5ff" opacity=".9">42 / 50</text>
+          <g stroke="#ffd9a0" stroke-width="1.4" opacity=".9">
+            <line x1="150" y1="250" x2="195" y2="225"/><line x1="195" y1="225" x2="240" y2="240"/><line x1="240" y1="240" x2="275" y2="215"/><line x1="150" y1="250" x2="130" y2="290"/><line x1="195" y1="225" x2="205" y2="275"/><line x1="240" y1="240" x2="255" y2="285"/><line x1="130" y1="290" x2="165" y2="305"/><line x1="205" y1="275" x2="165" y2="305"/>
+          </g>
+          <g fill="#fff2c9"><circle cx="150" cy="250" r="4"/><circle cx="195" cy="225" r="5"/><circle cx="240" cy="240" r="4"/><circle cx="275" cy="215" r="3.4"/><circle cx="130" cy="290" r="3.4"/><circle cx="205" cy="275" r="3.6"/><circle cx="255" cy="285" r="3"/><circle cx="165" cy="305" r="3.4"/></g>
+          <circle cx="262" cy="222" r="5" fill="#ff9a4d"><title>ember eye</title></circle>
+          <circle cx="262" cy="222" r="11" fill="#ff9a4d" opacity=".25"/>
+          <ellipse cx="200" cy="255" rx="95" ry="60" fill="#ff8a3d" opacity=".07"/>
+          <text x="195" y="355" text-anchor="middle" font-size="21" fill="#e8c76a" letter-spacing="4" font-family="Georgia">VULPES</text>
+          <text x="195" y="376" text-anchor="middle" font-size="11.5" fill="#8a94c4" letter-spacing="3">THE EMBER FOX</text>
+          <text x="195" y="498" text-anchor="middle" font-size="64" fill="#e05c6a" font-family="Georgia" style="font-weight:bold" opacity=".95">−8</text>
+          <circle cx="195" cy="478" r="52" fill="#e05c6a" opacity=".08"/>
+          <path d="M205 440 C 180 380, 90 120, 46 52" stroke="#e05c6a" stroke-width="1.5" fill="none" opacity=".35" stroke-dasharray="3 6"/>
+          <text x="195" y="690" text-anchor="middle" font-size="12.5" fill="#39406e" letter-spacing="3">— no board yet —</text>
+        </svg>
+      </div>
+      <div class="mocklabel">the pounce before the board</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:00</span><span class="m s">SCRIPT</span>arrive mid-fall: star streaks decelerate over the battle zenith — no logo, no ground, no sound</li>
+        <li><span class="t">0:01</span><span class="m s">SCRIPT</span>VULPES assembles <i>already charged</i> — fuse at "strikes in 1 cast", eyes pulsing</li>
+        <li><span class="t">0:04</span><span class="m s">SCRIPT</span>THE OPENING POUNCE — a scripted −8 before any board exists; the YOU bar fades in to catch it</li>
+        <li><span class="t">0:07</span><span class="m s">SCRIPT</span>the answer rains in: the curated STAR deal; fuse re-arms to 4; the hand points at S</li>
+        <li><span class="t">0:12</span><span class="m g">GUIDE</span>first tap = the game's first sound ever; the hand walks STAR; CAST 5</li>
+        <li><span class="t">0:40</span><span class="m g">GUIDE</span>first cast — hand retires; pop, bar-slam, drain, score arc</li>
+        <li><span class="t">1:10</span><span class="m g">GUIDE</span>THE FORESEEN STRIKE — the fuse you watched count 4→1 lands; this time you predicted it; dew blooms</li>
+        <li><span class="t">1:45</span><span class="m s">SCRIPT</span>THE TITLE IS THE TROPHY — the dead fox's stars curve back and condense into the STARSPELL wordmark</li>
+        <li><span class="t">2:10</span><span class="m f">FREE</span>the sigil pick — the first wholly real decision IS the hidden seam</li>
+        <li><span class="t">5:00</span><span class="m f">FREE</span>mid-fight 2, title earned, fifth pip glinting — mid-sentence by design</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 7/10</div>
+    Strongest: the trophy title — <q>a genuinely Snap-grade identity move … the single moment where a cold player feels
+    the game is confident enough to make THEM pay for its name</q> — and the two-strike fuse lesson. Weakest: every
+    day-two asset (meadow, crickets, daily chip) is banked at minute 9–14 behind finishing the run; <q>the player who
+    leaves at minute 5 exits having seen zero return hooks.</q> Churn: hurt-before-agency on a decompress-seeking
+    audience; the silent pounce reads broken on muted phones; the first kill costs ~six words from a cold speller.
+    <div class="vh">The feasibility critic — 7/10 · true size L</div>
+    <span class="flag">Two beats sold as reuse are the two needing carpentry:</span> the title condense is scene-coupled
+    to the meadow (an extraction-and-port, not verbatim), and THE FIRST EARTH cites two mutually exclusive shipped paths
+    — the glide and the full-chrome restart — <q>the described moment exists on neither.</q> Battle's sky also has no
+    velocity driver — the deceleration is new code. Everything else lands line-exact.
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>Cheapen the first kill</b> — VULPES at 18–20 hp so the slowest speller fells it by ~2:00.</li>
+    <li><b>Deliver THE FIRST EARTH on loss too</b> — every first session, won or lost, ends on the meadow + the counting chip. The critic called this the single highest-leverage graft in the deck.</li>
+    <li><b>No dead taps ever</b> — any tap advances the beat and sparks at the fingertip; it also arms audio so strike #2 is guaranteed to sound.</li></ul>
+  </div>
+
+  <!-- ====================== CONCEPT III ====================== -->
+  <h2>III · The Herald's Promise</h2>
+  <p class="tagline">COLUMBA climbs beside you, keeps your first star · and tomorrow's sky gives it back</p>
+  <div class="scorerow">
+    <span class="sc">player <b>6.5</b></span><span class="sc good">feasibility <b>8</b></span>
+    <span class="sc gold">size <b>full M</b></span><span class="sc warn">new strings <b>3 ×5 langs</b></span>
+  </div>
+  <p class="lede">A wordless game gains exactly one relationship. COLUMBA, THE HERALD DOVE — <b>already complete in the
+  bestiary</b>, fourteen stars, cream tint, bob idle — assembles off your shoulder mid-ascent and spends the first night
+  as a <i>witness, not a narrator</i>: it startles off its perch and flies to your health bar one beat before the first
+  strike lands there (the fuse taught by body language), it taps the dew tile with its beak, and when your first beast
+  scatters it <b>catches one dying star</b> and seats it, glowing, in its own chart. At graduation it sets that star into
+  the daily chip and the ribbon names tomorrow's sky. Tomorrow the dove is standing there — and your star burns in that
+  day's battle sky with a hero-star cross. Not a streak guilt-trip; a creature keeping its word.</p>
+
+  <div class="tl" data-tl="mentor"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the dove catches one dying star from your first kill">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <g stroke="#ffd77a" stroke-width="1" opacity=".5">
+            <line x1="40" y1="60" x2="40" y2="92"/><line x1="110" y1="30" x2="110" y2="70"/><line x1="200" y1="50" x2="200" y2="86"/><line x1="290" y1="24" x2="290" y2="60"/><line x1="350" y1="80" x2="350" y2="112"/><line x1="70" y1="150" x2="70" y2="180"/><line x1="160" y1="130" x2="160" y2="158"/><line x1="250" y1="160" x2="250" y2="190"/><line x1="330" y1="200" x2="330" y2="228"/>
+          </g>
+          <g stroke="#fff2c9" stroke-width="1.2" opacity=".75">
+            <line x1="140" y1="330" x2="100" y2="290"/><line x1="140" y1="330" x2="185" y2="280"/><line x1="140" y1="330" x2="90" y2="350"/><line x1="140" y1="330" x2="120" y2="390"/><line x1="140" y1="330" x2="190" y2="370"/>
+          </g>
+          <g fill="#fff2c9"><circle cx="100" cy="290" r="2.6"/><circle cx="185" cy="280" r="2.2"/><circle cx="90" cy="350" r="2.4"/><circle cx="120" cy="390" r="2"/><circle cx="190" cy="370" r="2.2"/></g>
+          <rect x="95" y="96" width="200" height="34" rx="8" fill="#121732" stroke="#232a52"/>
+          <text x="195" y="118" text-anchor="middle" font-size="12.5" fill="#e8c76a" letter-spacing="2.5">FIRST BLOOD</text>
+          <g stroke="#e8ddc8" stroke-width="1.3" opacity=".95">
+            <line x1="258" y1="300" x2="282" y2="282"/><line x1="282" y1="282" x2="306" y2="296"/><line x1="282" y1="282" x2="286" y2="316"/><line x1="258" y1="300" x2="246" y2="326"/><line x1="306" y1="296" x2="322" y2="322"/><line x1="286" y1="316" x2="268" y2="338"/><line x1="286" y1="316" x2="304" y2="340"/><line x1="246" y1="326" x2="268" y2="338"/><line x1="322" y1="322" x2="304" y2="340"/>
+          </g>
+          <g fill="#f5eedd"><circle cx="258" cy="300" r="2.8"/><circle cx="282" cy="282" r="3.2"/><circle cx="306" cy="296" r="2.8"/><circle cx="286" cy="316" r="2.6"/><circle cx="246" cy="326" r="2.4"/><circle cx="322" cy="322" r="2.4"/><circle cx="268" cy="338" r="2.2"/><circle cx="304" cy="340" r="2.2"/></g>
+          <g transform="translate(236,270)"><path d="M0 -14 L3 -3 L14 0 L3 3 L0 14 L-3 3 L-14 0 L-3 -3 Z" fill="#ffd77a"/><circle r="4" fill="#fff2c9"/></g>
+          <circle cx="236" cy="270" r="18" fill="#ffd77a" opacity=".15"/>
+          <circle cx="292" cy="312" r="4" fill="#ffd77a"/><circle cx="292" cy="312" r="9" fill="#ffd77a" opacity=".3"/>
+          <text x="195" y="470" text-anchor="middle" font-size="13.5" fill="#e8c76a" opacity=".9" font-style="italic">your first star · the herald keeps it</text>
+          <rect x="60" y="452" width="270" height="1" fill="#232a52"/><rect x="60" y="480" width="270" height="1" fill="#232a52"/>
+          <g opacity=".22" fill="#121732" stroke="#232a52">
+            <rect x="52" y="560" width="64" height="64" rx="10"/><rect x="126" y="560" width="64" height="64" rx="10"/><rect x="200" y="560" width="64" height="64" rx="10"/><rect x="274" y="560" width="64" height="64" rx="10"/>
+            <rect x="52" y="634" width="64" height="64" rx="10"/><rect x="126" y="634" width="64" height="64" rx="10"/><rect x="200" y="634" width="64" height="64" rx="10"/><rect x="274" y="634" width="64" height="64" rx="10"/>
+          </g>
+          <text x="330" y="52" text-anchor="middle" font-size="13" fill="#dfe5ff" opacity=".8" class="num">112</text>
+        </svg>
+      </div>
+      <div class="mocklabel">the caught star — a kill animation becomes a keepsake</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:00</span><span class="m s">SCRIPT</span>the shipped open, verbatim — condense, settle, auto-rise</li>
+        <li><span class="t">0:04</span><span class="m s">SCRIPT</span>THE SHARED CLIMB — loose stars gather into the dove off your right shoulder; you crest the zenith together</li>
+        <li><span class="t">0:07</span><span class="m s">SCRIPT</span>pinned VULPES assembles; the dove swoops to its perch above the pips</li>
+        <li><span class="t">0:40</span><span class="m g">GUIDE</span>STAR, cast, hand retires — the dove wing-flicks on the hit</li>
+        <li><span class="t">1:40</span><span class="m g">GUIDE</span>THE WARNING — fuse hits 1; the dove startles and flies to hover at YOUR bar, wings spread at the fox</li>
+        <li><span class="t">1:50</span><span class="m g">GUIDE</span>the pounce lands; the dove taps the dew tile twice with its beak</li>
+        <li><span class="t">2:50</span><span class="m g">GUIDE</span>THE CAUGHT STAR — the dove dives into the death-scatter, one star seats glowing in its chart; the ribbon whispers its first line</li>
+        <li><span class="t">3:10</span><span class="m f">FREE</span>the sigil pick; the dove perches silent on the veil's edge</li>
+        <li><span class="t">3:40</span><span class="m f">FREE</span>the hidden seam — the dove stops leading and starts mirroring</li>
+        <li><span class="t">~9:00</span><span class="m s">SCRIPT</span>graduation coda — the star set into the daily chip; tomorrow's sky named · <b>+1 day:</b> the promise kept</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 6.5/10</div>
+    Strongest: THE WARNING — <q>fuse ribbon → startled dove → YOU bar, then the hit lands exactly where the eye just
+    went … the only beat where the dove does a JOB instead of being decoration.</q> Weakest: the caught star is staged at
+    the most crowded instant of the night — gold rain, toast, scatter — <q>the keepsake is the least legible object on
+    screen at the one moment it must be the only thing that matters.</q> And the whole promise pays at ~9:00:
+    <q>it preaches the sermon at minute nine to a congregation that closes the app at minute five.</q>
+    <div class="vh">The feasibility critic — 8/10 · full M</div>
+    The highest retention-per-line-of-code beat in the deck: dove, scatter, chip, seven-skies names, even the headless
+    day-key seam all ship today. <span class="flag">Caught claims:</span> "the chip's ember lights for the first time"
+    contradicts shipped behavior (it already breathes — let it <i>surge</i>, not ignite); the dove can't fly across the
+    scene cut (three instantiations, not one); wild-COLUMBA can still be dealt as a foe later (needs a ruling).
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>Write the kept-star flag at the catch, not at graduation</b> — an app killed mid-run still gets the promise
+    spoken on next open. Worth more than any animation.</li>
+    <li><b>De-crowd the catch</b> — suppress the toast, wait out the gold rain, 400&nbsp;ms time-dilation while the star seats.</li>
+    <li><b>Board-dim + one haptic tick under the warning</b> — the only channel guaranteed to reach a heads-down reader.</li>
+    <li><b>Two rulings for you before any card:</b> may three ribbon lines end the wordless first open, and is a wild
+    COLUMBA charming or excluded?</li></ul>
+  </div>
+
+  <!-- ====================== CONCEPT IV ====================== -->
+  <h2>IV · The Sky Leans In</h2>
+  <p class="tagline">every word louder than the last · the sky swears it never helped</p>
+  <div class="scorerow">
+    <span class="sc">player <b>7</b></span><span class="sc good">feasibility <b>8</b></span>
+    <span class="sc gold">size <b>M, heavy end</b></span><span class="sc good">new strings <b>0</b></span>
+  </div>
+  <p class="lede">The hook is engineered competence: every word the player casts lands bigger, hotter, louder than the
+  last — and the sky reacts like it's watching something rare. A rigged refill queue (then a "kind bag" that fades
+  100→50→0% by fight 4) keeps 5–6 letter words findable while staying statistically invisible; the shipped celebration
+  ladder pays each new length rung with a one-shot cue — a shooting star on the first 5+, the auroras swelling at 6+,
+  a gold-rain burst at 7+. The first cast is THE WORD WRITTEN IN STARS: S·T·A·R hangs as four new stars threaded gold
+  beside the fox, holds one breath, then collapses into the damage number. And VULPES is tuned to 33&nbsp;hp so <b>the
+  ember minute always arrives</b> — "strikes in 1 cast" with the beast at a sliver: race it or eat it, the core tension
+  manufactured on day one at stakes of exactly 8 damage.</p>
+
+  <div class="tl" data-tl="power"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the first cast hangs as four new stars beside the fox">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <g fill="#cfd8ff"><circle cx="50" cy="70" r="1.2" opacity=".6"/><circle cx="330" cy="50" r="1.4" opacity=".7"/><circle cx="130" cy="110" r="1" opacity=".4"/><circle cx="360" cy="180" r="1" opacity=".5"/><circle cx="30" cy="220" r="1.1" opacity=".5"/><circle cx="90" cy="160" r="1" opacity=".4"/></g>
+          <text x="195" y="34" text-anchor="middle" font-size="12" fill="#c9b676" letter-spacing="3">QUICK PLAY</text>
+          <g fill="#39406e"><circle cx="155" cy="56" r="4"/><circle cx="175" cy="56" r="4"/><circle cx="195" cy="56" r="4"/><circle cx="215" cy="56" r="4"/></g>
+          <circle cx="235" cy="56" r="4" fill="#ff9a4d"/>
+          <g stroke="#ffd9a0" stroke-width="1.3" opacity=".85">
+            <line x1="80" y1="210" x2="118" y2="188"/><line x1="118" y1="188" x2="155" y2="200"/><line x1="155" y1="200" x2="182" y2="180"/><line x1="80" y1="210" x2="66" y2="244"/><line x1="118" y1="188" x2="126" y2="230"/><line x1="155" y1="200" x2="166" y2="238"/><line x1="66" y1="244" x2="96" y2="256"/><line x1="126" y1="230" x2="96" y2="256"/>
+          </g>
+          <g fill="#fff2c9"><circle cx="80" cy="210" r="3.4"/><circle cx="118" cy="188" r="4"/><circle cx="155" cy="200" r="3.4"/><circle cx="182" cy="180" r="2.8"/><circle cx="66" cy="244" r="2.8"/><circle cx="126" cy="230" r="3"/><circle cx="96" cy="256" r="2.8"/></g>
+          <circle cx="172" cy="186" r="4" fill="#ff9a4d"/><circle cx="172" cy="186" r="9" fill="#ff9a4d" opacity=".25"/>
+          <g>
+            <polyline points="245,230 278,196 310,214 338,186" fill="none" stroke="#ffd77a" stroke-width="1.6" opacity=".85"/>
+            <g transform="translate(245,230)"><path d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z" fill="#ffd77a"/></g>
+            <g transform="translate(278,196)"><path d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z" fill="#ffd77a"/></g>
+            <g transform="translate(310,214)"><path d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z" fill="#ffd77a"/></g>
+            <g transform="translate(338,186)"><path d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z" fill="#ffd77a"/></g>
+            <text x="245" y="252" text-anchor="middle" font-size="10" fill="#e8c76a">S</text><text x="278" y="186" text-anchor="middle" font-size="10" fill="#e8c76a">T</text><text x="310" y="236" text-anchor="middle" font-size="10" fill="#e8c76a">A</text><text x="338" y="176" text-anchor="middle" font-size="10" fill="#e8c76a">R</text>
+          </g>
+          <text x="195" y="310" text-anchor="middle" font-size="18" fill="#e8c76a" letter-spacing="4">VULPES</text>
+          <rect x="70" y="326" width="250" height="12" rx="6" fill="#1a2040"/><rect x="70" y="326" width="250" height="12" rx="6" fill="#d86a74"/>
+          <text x="195" y="336" text-anchor="middle" font-size="9.5" fill="#20101a">33 / 33</text>
+          <text x="195" y="362" text-anchor="middle" font-size="11" fill="#e8a2aa" opacity=".9">✦ strikes in 4 casts ✦</text>
+          <g font-family="Georgia">
+            <g fill="#e9e0cf" stroke="#c9a94f" stroke-width="1">
+              <rect x="52" y="420" width="64" height="64" rx="10"/><rect x="126" y="420" width="64" height="64" rx="10"/><rect x="200" y="420" width="64" height="64" rx="10"/><rect x="274" y="420" width="64" height="64" rx="10"/>
+              <rect x="52" y="494" width="64" height="64" rx="10"/><rect x="126" y="494" width="64" height="64" rx="10"/><rect x="200" y="494" width="64" height="64" rx="10"/><rect x="274" y="494" width="64" height="64" rx="10"/>
+              <rect x="52" y="568" width="64" height="64" rx="10"/><rect x="200" y="568" width="64" height="64" rx="10"/><rect x="274" y="568" width="64" height="64" rx="10"/>
+              <rect x="52" y="642" width="64" height="64" rx="10"/><rect x="126" y="642" width="64" height="64" rx="10"/><rect x="200" y="642" width="64" height="64" rx="10"/><rect x="274" y="642" width="64" height="64" rx="10"/>
+            </g>
+            <rect x="126" y="560" width="64" height="64" rx="10" fill="#efe7d6" stroke="#c9a94f" stroke-width="1" transform="rotate(-2 158 592)"/>
+            <g fill="#5b4a2a" font-size="30" text-anchor="middle">
+              <text x="84" y="462">R</text><text x="158" y="462">E</text><text x="232" y="462">M</text><text x="306" y="462">O</text>
+              <text x="84" y="536">A</text><text x="158" y="536">L</text><text x="232" y="536">I</text><text x="306" y="536">T</text>
+              <text x="84" y="610">N</text><text x="232" y="610">D</text><text x="306" y="610">E</text>
+              <text x="84" y="684">O</text><text x="158" y="684">T</text><text x="232" y="684">A</text><text x="306" y="684">U</text>
+            </g>
+            <text x="156" y="602" font-size="30" fill="#5b4a2a" text-anchor="middle" transform="rotate(-2 158 592)">M</text>
+          </g>
+          <rect x="40" y="740" width="110" height="46" rx="14" fill="#15122b" stroke="#3a3560"/>
+          <text x="95" y="769" text-anchor="middle" font-size="14" fill="#8a94c4" letter-spacing="2">SCRY ↻</text>
+          <rect x="170" y="736" width="180" height="54" rx="16" fill="#2a2410" stroke="#c9a94f"/>
+          <text x="260" y="770" text-anchor="middle" font-size="17" fill="#ffe08d" letter-spacing="3">CAST</text>
+        </svg>
+      </div>
+      <div class="mocklabel">the word written in stars — tutorial, fantasy and screenshot in one beat</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:04</span><span class="m s">SCRIPT</span>the shipped open kept verbatim — condense, rise, pinned VULPES at 33&nbsp;hp</li>
+        <li><span class="t">0:45</span><span class="m g">GUIDE</span>STAR stands; first sound; hand glides to CAST and retires</li>
+        <li><span class="t">0:50</span><span class="m s">SCRIPT</span>THE WORD WRITTEN IN STARS — the cast hangs as four stars, then collapses into the 5 that slams the bar; the rigged refill drops M·O·N·S</li>
+        <li><span class="t">1:30</span><span class="m g">GUIDE</span>the board is secretly dense — MOON free, MOTION/ALMOND live; the first 5+ fires the forge + a cue shooting star</li>
+        <li><span class="t">2:10</span><span class="m g">GUIDE</span>THE EMBER MINUTE — strikes-in-1, beast at a sliver, "6 left" vs your staged word</li>
+        <li><span class="t">2:50</span><span class="m f">FREE</span>the kill; gold rain; FIRST BLOOD</li>
+        <li><span class="t">3:10</span><span class="m f">FREE</span>first-ever sigil trio curated legible: QUILL / SALVE / FIRST LIGHT</li>
+        <li><span class="t">3:40</span><span class="m f">FREE</span>fight 2 from the kind bag + one planted gilded tile — the glow you now know how to chase</li>
+        <li><span class="t">5:00</span><span class="m f">FREE</span>mid-fight 2/3; the rig is fading; the player believes they earned SPLENDID! — they did, mostly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 7/10</div>
+    Strongest: the constellation-write — <q>simultaneously the tutorial, the fantasy, and the say-it-out-loud screenshot
+    — and it lands inside minute one.</q> Weakest: 1:30, <q>"the player finds THEIR word unaided" … rigged density is
+    invisible to the player it is rigged for</q> — the bottom-half scanner casts TAN forever and the ladder never fires.
+    <div class="vh">The feasibility critic — 8/10 · M heavy end</div>
+    <q>The rare concept doc that read the code before it dreamed — ~95% of its anchors land exact on HEAD.</q> The ember
+    minute is ~5 lines closing the shipped flow's most dangerous gap. Light spots: the constellation-write forks the
+    hottest function in the game (150–250 lines, not 100), the aurora swell needs stored handles, and the authored
+    density has no per-language validation plan — <span class="flag">the single highest-leverage missing piece.</span>
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>Idle rescue, wordless</b> — 8–10&nbsp;s of stall → one tile of the planted word shimmers once; at 30&nbsp;s the ghost hand returns for one gesture.</li>
+    <li><b>Skill-floor the ladder</b> — no 5+ by cast 5 → the queue deals MOON nearly assembled; the escalation must fire for the bottom half.</li>
+    <li><b>A density validator beside build-words.py</b> — assert ≥3 findable words at lengths 4/5/6 per language after every rigged refill, or the queues rot.</li>
+    <li><b>Plant tomorrow inside the window</b> — when LEPUS falls, one wordless cue: the bestiary strip slides past, VULPES lit, 24 dark.</li></ul>
+  </div>
+
+  <!-- ====================== CONCEPT V ====================== -->
+  <h2>V · The Wordless Road</h2>
+  <p class="tagline">show the summit once · teach with a finger · never say a word</p>
+  <div class="scorerow">
+    <span class="sc">player <b>6.5</b></span><span class="sc good">feasibility <b>8</b></span>
+    <span class="sc warn">size M <b>(L as written; overlay fix buys it back)</b></span><span class="sc good">new strings <b>0</b></span>
+  </div>
+  <p class="lede">Your 9/2 philosophy taken to its limit: zero instruction copy, ever — even the hardcoded "tap letters
+  to weave a word" line comes OFF for the first fight. The game opens at the <b>true zenith</b> with DRACO looming at
+  15% alpha, only two ember eyes lit, while the wordmark condenses in front of it — then one unbroken 2.8&nbsp;s fall
+  down the whole world column, so the player has seen exactly how high this world goes before they're handed the ground.
+  On the bare meadow, <b>one firefly asks</b>: it breathes the hand's own gold push-ring, and the player's tap — anywhere
+  — launches the ascent <i>and arms the audio in the same gesture</i>, so the riser and the arrival chime are heard on a
+  true first open for the first time in the game's history. The hand gets exactly one encore (the dew tile). At first
+  blood, a 2&nbsp;s tilt-up: the eyes at the top of the column glint once. The opening shot, paid off inside three minutes.</p>
+
+  <div class="tl" data-tl="mystery"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the summit shown first — DRACO looming dim behind the condensing wordmark">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <rect x="0" y="0" width="60" height="844" rx="18" fill="#2fe0d0" opacity=".04"/>
+          <rect x="330" y="0" width="60" height="844" rx="18" fill="#b9a6ff" opacity=".05"/>
+          <g stroke="#6a5a9e" stroke-width="1.6" opacity=".2">
+            <path d="M60 140 L110 110 L170 130 L230 100 L290 128 L330 96" fill="none"/>
+            <path d="M330 96 L350 150 L310 200 L250 230 L190 210 L130 250" fill="none"/>
+          </g>
+          <g fill="#8f7cb8" opacity=".3"><circle cx="60" cy="140" r="2.6"/><circle cx="110" cy="110" r="3"/><circle cx="170" cy="130" r="2.6"/><circle cx="230" cy="100" r="3"/><circle cx="290" cy="128" r="2.6"/><circle cx="330" cy="96" r="3.2"/><circle cx="350" cy="150" r="2.4"/><circle cx="310" cy="200" r="2.6"/><circle cx="250" cy="230" r="2.4"/><circle cx="190" cy="210" r="2.4"/><circle cx="130" cy="250" r="2.4"/></g>
+          <circle cx="318" cy="88" r="5" fill="#ff9a4d" opacity=".9"/><circle cx="338" cy="100" r="4.4" fill="#ff9a4d" opacity=".85"/>
+          <circle cx="318" cy="88" r="12" fill="#ff9a4d" opacity=".2"/><circle cx="338" cy="100" r="10" fill="#ff9a4d" opacity=".18"/>
+          <line x1="40" y1="300" x2="96" y2="336" stroke="#fff2c9" stroke-width="1.6" opacity=".8"/>
+          <circle cx="96" cy="336" r="2.2" fill="#fff2c9"/>
+          <ellipse cx="195" cy="420" rx="120" ry="40" fill="#ffd77a" opacity=".08"/>
+          <text x="195" y="430" text-anchor="middle" font-size="34" fill="#e8c76a" letter-spacing="5" font-family="Georgia" opacity=".85">STARSPELL</text>
+          <g fill="#ffe9c9" opacity=".8"><circle cx="120" cy="400" r="1.6"/><circle cx="150" cy="445" r="1.3"/><circle cx="256" cy="398" r="1.4"/><circle cx="286" cy="440" r="1.2"/><circle cx="200" cy="384" r="1.2"/><circle cx="230" cy="452" r="1.4"/><circle cx="104" cy="430" r="1.2"/></g>
+          <g fill="#cfd8ff"><circle cx="60" cy="560" r="1.1" opacity=".45"/><circle cx="140" cy="620" r="1" opacity=".4"/><circle cx="230" cy="580" r="1.2" opacity=".45"/><circle cx="320" cy="640" r="1" opacity=".4"/><circle cx="90" cy="700" r="1" opacity=".3"/><circle cx="280" cy="730" r="1" opacity=".3"/><circle cx="180" cy="770" r="1" opacity=".3"/></g>
+          <text x="195" y="812" text-anchor="middle" font-size="11.5" fill="#39406e" letter-spacing="2.5">the whole road waits below</text>
+        </svg>
+      </div>
+      <div class="mocklabel">the summit, first — the eyes are up there, waiting</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:03</span><span class="m s">SCRIPT</span>THE ZENITH OPEN — true top of the column; DRACO's dim loom; the condense in front of it</li>
+        <li><span class="t">0:07</span><span class="m s">SCRIPT</span>THE WHOLE ROAD DOWN — one 2.8&nbsp;s fall through every band; ~200 stars thinning to ~12</li>
+        <li><span class="t">0:10</span><span class="m g">GUIDE</span>ONE FIREFLY ASKS — the ring-lure; any tap launches + wakes sound; 6&nbsp;s fallback auto-rises</li>
+        <li><span class="t">0:13</span><span class="m s">SCRIPT</span>THE ASCENT, HEARD — riser, star-streak, hush, arrival chime, audible at last</li>
+        <li><span class="t">0:17</span><span class="m s">SCRIPT</span>pinned VULPES; the STAR board; header and hint line stripped — only the fox's name speaks</li>
+        <li><span class="t">0:45</span><span class="m f">FREE</span>first cast; the hand retires; real bag — free play began and nothing announced it</li>
+        <li><span class="t">1:40</span><span class="m s">SCRIPT</span>THE TAUGHT STRIKE — fully telegraphed, survivable −8</li>
+        <li><span class="t">1:50</span><span class="m g">GUIDE</span>THE ENCORE — the hand returns once, for the dew, then retires forever, floating higher</li>
+        <li><span class="t">2:40</span><span class="m f">FREE</span>first blood → THE TILT-UP: the eyes glint at the top of the column; first pip gilds</li>
+        <li><span class="t">5:00</span><span class="m f">FREE</span>mid-fight 2; summit seen twice; not one word of instruction ever shown</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 6.5/10</div>
+    Strongest: the first cast and its invisible seam — <q>Marvel Snap's whole FTUE philosophy executed better than the
+    summit cinematics the concept actually brags about</q> — and the dew encore, <q>the best piece of pure teaching
+    craft.</q> Weakest: the summit payload is subliminal — <q>the loop is open on the design page, not in the player's
+    head.</q> A 15%-alpha dragon nobody encodes can't pay off at 2:40. Fix is one slow <b>blink</b> timed to the
+    wordmark's landing flare, repeated at the tilt-up.
+    <div class="vh">The feasibility critic — 8/10 · L as written, M with the overlay fix</div>
+    The lure is <q>the smallest new code in the whole concept … it fixes a real, verifiable shipped defect — worth
+    shipping even if everything else on the page dies.</q> <span class="flag">Does not hold:</span> the tilt-up points a
+    camera Battle doesn't own — its sky is a flat screen-space starfield, no column, no scroll — ship it as a screen-fixed
+    overlay instead. The fight pin must burn the stock rng rolls (draw-order law), and a Sunday install collides with the
+    Court of Kings — write the rule: a player's first-ever fight is VULPES on every day of the week.
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>One blink</b> — make the eyes an encode, not a secret.</li>
+    <li><b>Accept input during the cinematic</b> — taps fast-forward to the lure and arm audio; dead taps teach the wrong lesson.</li>
+    <li><b>Split the refusal grammar</b> — not-a-word crumbles to dust; too-short bounces home. Still zero words.</li>
+    <li><b>Tighten the lure ladder</b> — ring at once, brighter pulse at 2.5&nbsp;s, auto-rise at 4&nbsp;s; reduced-motion keeps today's 850&nbsp;ms.</li></ul>
+  </div>
+
+  <!-- ====================== CONCEPT VI ====================== -->
+  <h2>VI · The Sky You Lit</h2>
+  <p class="tagline">the night opens dark · what you light, the sky keeps</p>
+  <div class="scorerow">
+    <span class="sc">player <b>7</b></span><span class="sc">feasibility <b>7</b></span>
+    <span class="sc warn">size M claimed → <b>L (M with the scope cut)</b></span><span class="sc warn">new strings <b>2 ×5</b></span>
+  </div>
+  <p class="lede">Tutorials are forgotten; marks are not. On a true first open the sky is almost starless — the
+  star-beasts have been eating it (DRACO is already THE STAR EATER; the fiction is canon). One lone star falls and
+  gutters out; the wordmark condenses as the brightest object in a dead world. VULPES assembles <i>dim</i>, grey-blue,
+  only its ember eyes alive — and every word the player lands visibly burns the dark out of it, brightness as a second
+  HP readout told in light. Then THE FIRST LIGHTING: the fell doesn't scatter the constellation to die — its stars
+  <b>rise and seat at the zenith, permanently</b>, lines redrawing gold, written to the profile, drawn on the meadow
+  every boot thereafter. One nameplate in the rite cadence: <i>VULPES · returns to the sky</i>. Tomorrow the game opens
+  on proof the world remembered you — one constellation lit by your hand, twenty-five still dark.</p>
+
+  <div class="tl" data-tl="stakes"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the first lighting — the felled fox's stars rise and seat at the zenith">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <g stroke="#e8c76a" stroke-width="1.2" opacity=".8">
+            <line x1="150" y1="90" x2="192" y2="68"/><line x1="192" y1="68" x2="232" y2="82"/><line x1="150" y1="90" x2="136" y2="124"/>
+          </g>
+          <g fill="#ffd77a">
+            <g transform="translate(150,90)"><path d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z"/></g>
+            <g transform="translate(192,68)"><path d="M0 -9 L2.2 -2.2 L9 0 L2.2 2.2 L0 9 L-2.2 2.2 L-9 0 L-2.2 -2.2 Z"/></g>
+            <g transform="translate(232,82)"><path d="M0 -8 L2 -2 L8 0 L2 2 L0 8 L-2 2 L-8 0 L-2 -2 Z"/></g>
+            <g transform="translate(136,124)"><path d="M0 -7 L1.8 -1.8 L7 0 L1.8 1.8 L-0 7 L-1.8 1.8 L-7 0 L-1.8 -1.8 Z"/></g>
+          </g>
+          <circle cx="232" cy="82" r="16" fill="none" stroke="#ffd77a" opacity=".5"/>
+          <circle cx="232" cy="82" r="26" fill="none" stroke="#ffd77a" opacity=".2"/>
+          <g fill="#ffcf7a">
+            <circle cx="248" cy="190" r="3.4"/><circle cx="222" cy="260" r="3.8"/><circle cx="262" cy="330" r="3.2"/><circle cx="208" cy="396" r="3.6"/>
+          </g>
+          <g stroke="#ffcf7a" stroke-width="1" opacity=".45">
+            <line x1="248" y1="196" x2="244" y2="214"/><line x1="222" y1="266" x2="218" y2="284"/><line x1="262" y1="336" x2="258" y2="354"/><line x1="208" y1="402" x2="204" y2="420"/>
+          </g>
+          <path d="M210 430 C 230 350, 240 260, 236 110" stroke="#ffd77a" stroke-width="1.2" fill="none" opacity=".25" stroke-dasharray="2 7"/>
+          <g stroke="#ffd77a" stroke-width="1" opacity=".3">
+            <line x1="80" y1="150" x2="80" y2="190"/><line x1="120" y1="220" x2="120" y2="256"/><line x1="320" y1="150" x2="320" y2="186"/><line x1="300" y1="250" x2="300" y2="282"/><line x1="60" y1="300" x2="60" y2="330"/><line x1="340" y1="330" x2="340" y2="360"/>
+          </g>
+          <text x="195" y="540" text-anchor="middle" font-size="24" fill="#e8c76a" letter-spacing="5" font-family="Georgia">VULPES</text>
+          <text x="195" y="566" text-anchor="middle" font-size="13.5" fill="#c9b676" font-style="italic">returns to the sky</text>
+          <g opacity=".18" fill="#121732" stroke="#232a52">
+            <rect x="52" y="630" width="64" height="64" rx="10"/><rect x="126" y="630" width="64" height="64" rx="10"/><rect x="200" y="630" width="64" height="64" rx="10"/><rect x="274" y="630" width="64" height="64" rx="10"/>
+            <rect x="52" y="704" width="64" height="64" rx="10"/><rect x="126" y="704" width="64" height="64" rx="10"/><rect x="200" y="704" width="64" height="64" rx="10"/><rect x="274" y="704" width="64" height="64" rx="10"/>
+          </g>
+        </svg>
+      </div>
+      <div class="mocklabel">the first lighting — a kill becomes a permanent mark</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:04</span><span class="m s">SCRIPT</span>THE LONE STAR FALLS — near-starless sky; one star falls and gutters; the condense is the brightest light in the world</li>
+        <li><span class="t">0:07</span><span class="m s">SCRIPT</span>auto-rise through a thin climb band — the thinness IS the story</li>
+        <li><span class="t">0:10</span><span class="m s">SCRIPT</span>VULPES assembles DIM — grey-blue, eyes only; the STAR board rains in</li>
+        <li><span class="t">0:40</span><span class="m g">GUIDE</span>the hand walks STAR; first sound at first tap</li>
+        <li><span class="t">1:10</span><span class="m f">FREE</span>first cast — the fox HEATS a shade per hit; damage has two readouts, one of them pure light</li>
+        <li><span class="t">2:00</span><span class="m f">FREE</span>the schedule-guaranteed strike; dew blooms after</li>
+        <li><span class="t">2:40</span><span class="m f">FREE</span>THE FIRST LIGHTING — stars rise and seat at the zenith; written to the profile, forever</li>
+        <li><span class="t">3:00</span><span class="m f">FREE</span>the sigil pick, untouched</li>
+        <li><span class="t">5:00</span><span class="m f">FREE</span>mid-fight 2, the sky measurably brighter than they found it; the graduate meadow wears their constellation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 7/10</div>
+    Strongest: the lighting fires on a fell the player genuinely earned — <q>this is the starter-Pokémon beat, and no
+    comp in the casual word space has it.</q> Weakest: <q>the dark open asks a cold player to mourn a sky they have
+    never seen</q> — six grey dots on black reads as "still loading." The graft: <b>THE THEFT PROLOGUE</b> — open on the
+    full jewelry-box sky for one breath, let a beast-shaped shadow swallow one constellation star by star, THEN cut to
+    dark. Absence only aches when the player saw what was taken.
+    <div class="vh">The feasibility critic — 7/10 · L as specced</div>
+    The fork point rides shipped choreography — genuinely cheap. <span class="flag">But the hook's second half isn't in
+    the plan:</span> the proposed dark-sky key would <q>black out every veteran's meadow on update day</q> (needs a flag
+    minted with the first-open decision); the zenith seats aren't authored anywhere (beast charts are local shapes, not
+    sky positions — 26 anchors are new design work); and the collection engine contradicts itself (ftue-only ceremony vs
+    25-more-to-light). The showcase also still assembles a lit beast into the "dead" sky — suppression is new, not free.
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>The theft prologue</b> — 2 seconds that convert the dark dress from designer fiction into felt loss.</li>
+    <li><b>Skip-lock the first-ever lighting</b> (~1.5&nbsp;s; taps accelerate the stagger, never cut it) — the one beat that makes tomorrow must be un-missable exactly once.</li>
+    <li><b>The scope cut that saves the M</b> — full ceremony ftue-only; every later first-species fell appends to the lit sky with a 600&nbsp;ms converge beat; one baked sky-band atlas, rebaked only on change.</li>
+    <li><b>Ghost the 25 dark outlines for 1.5&nbsp;s at graduation</b> + ledger line "constellations lit · 1 of 26" — the ache needs a pictured next.</li></ul>
+  </div>
+
+  <!-- ====================== CONCEPT VII ====================== -->
+  <h2>VII · The First Ascent</h2>
+  <p class="tagline">every rung a first · the climb never goes cold</p>
+  <div class="scorerow">
+    <span class="sc">player <b>7</b></span><span class="sc good">feasibility <b>8</b></span>
+    <span class="sc warn">size M claimed → <b>L (the graduation-law rework)</b></span><span class="sc warn">new strings <b>2 ×5</b></span>
+  </div>
+  <p class="lede">Today's first game <b>evaporates</b> — no checkpoint, win-or-die — so walking away costs nothing, and
+  most walk away mid-fight-2. This concept makes the first session a named five-rung ladder, THE FIRST ASCENT, that
+  <b>cannot be lost</b>: fight 1's fuse never fires (pure offense first); the one-shot gold thread spells L·I·G·H·T and
+  the button says the multiplier out loud — 12 where STAR said 5; the first strike is staged safe at full health with the
+  dew answer in the same breath; at the first fell a tiny star seats on the fight pip and breathes — <i>"the stars hold
+  your place"</i> — and the run saves itself from then on, with death only rewinding. At the second fell, THE ROAD
+  REVEALED: the camera lifts into the night chart, opens on DRACO's two open ember eyes at the top, and glides down the
+  serpentine road — CYGNUS dark, CORVUS dark with a gold sigil medallion seated one fight away — to the player's rung,
+  two constellations burning gold below. Then the elite herald, at 5:00 exactly. Whenever they stop — back arrow,
+  pocketed phone, even death — the meadow door reads <b>THE FIRST ASCENT · fight 3 of 5</b> under that same breathing star.</p>
+
+  <div class="tl" data-tl="ladder"></div>
+
+  <div class="duo">
+    <div>
+      <div class="mock">
+        <svg viewBox="0 0 390 844" role="img" aria-label="Mock: the road revealed — DRACO at the top, the player's rung below">
+          <rect width="390" height="844" rx="18" fill="#0a0d1c"/>
+          <rect width="390" height="844" rx="18" fill="#10142e" opacity=".5"/>
+          <path d="M195 800 C 90 740, 300 660, 195 590 C 110 535, 290 470, 200 400 C 120 345, 300 290, 215 215 C 160 165, 230 120, 250 90"
+                fill="none" stroke="#39406e" stroke-width="2" stroke-dasharray="1 10" stroke-linecap="round"/>
+          <g stroke="#5a4e86" stroke-width="1.4" opacity=".35">
+            <path d="M150 120 C 190 95, 240 85, 285 95 C 320 103, 340 125, 330 150 C 322 170, 290 172, 270 160" fill="none"/>
+          </g>
+          <circle cx="252" cy="98" r="4.6" fill="#ff9a4d"/><circle cx="276" cy="92" r="4" fill="#ff9a4d"/>
+          <circle cx="252" cy="98" r="11" fill="#ff9a4d" opacity=".22"/><circle cx="276" cy="92" r="9" fill="#ff9a4d" opacity=".18"/>
+          <ellipse cx="260" cy="120" rx="80" ry="34" fill="#6b4585" opacity=".1"/>
+          <g stroke="#7e89b8" stroke-width="1.1" opacity=".5">
+            <line x1="150" y1="250" x2="185" y2="285"/><line x1="185" y1="285" x2="220" y2="320"/><line x1="185" y1="285" x2="150" y2="320"/><line x1="185" y1="285" x2="222" y2="252"/>
+          </g>
+          <g fill="#9aa6d4" opacity=".6"><circle cx="150" cy="250" r="2.6"/><circle cx="185" cy="285" r="3"/><circle cx="220" cy="320" r="2.6"/><circle cx="150" cy="320" r="2.4"/><circle cx="222" cy="252" r="2.4"/></g>
+          <g stroke="#7e89b8" stroke-width="1.1" opacity=".5">
+            <line x1="235" y1="430" x2="265" y2="408"/><line x1="265" y1="408" x2="296" y2="424"/><line x1="265" y1="408" x2="268" y2="448"/>
+          </g>
+          <g fill="#9aa6d4" opacity=".6"><circle cx="235" cy="430" r="2.6"/><circle cx="265" cy="408" r="3"/><circle cx="296" cy="424" r="2.6"/><circle cx="268" cy="448" r="2.4"/></g>
+          <text x="312" y="438" font-size="10" fill="#8a94c4" letter-spacing="2">· ELITE</text>
+          <circle cx="232" cy="372" r="11" fill="#2a2410" stroke="#c9a94f" stroke-width="1.6"/>
+          <circle cx="232" cy="372" r="18" fill="#e8c76a" opacity=".14"/>
+          <text x="232" y="377" text-anchor="middle" font-size="11" fill="#ffe08d">✦</text>
+          <g stroke="#ffd77a" stroke-width="1.2" opacity=".9">
+            <line x1="150" y1="610" x2="180" y2="588"/><line x1="180" y1="588" x2="212" y2="602"/><line x1="180" y1="588" x2="178" y2="626"/>
+          </g>
+          <g fill="#ffd77a"><circle cx="150" cy="610" r="3"/><circle cx="180" cy="588" r="3.4"/><circle cx="212" cy="602" r="3"/><circle cx="178" cy="626" r="2.8"/></g>
+          <g stroke="#ffd77a" stroke-width="1.2" opacity=".9">
+            <line x1="220" y1="722" x2="252" y2="700"/><line x1="252" y1="700" x2="282" y2="716"/><line x1="220" y1="722" x2="214" y2="752"/>
+          </g>
+          <g fill="#ffd77a"><circle cx="220" cy="722" r="3"/><circle cx="252" cy="700" r="3.4"/><circle cx="282" cy="716" r="3"/><circle cx="214" cy="752" r="2.8"/></g>
+          <g transform="translate(176,528)"><path d="M0 -13 L3 -3 L13 0 L3 3 L0 13 L-3 3 L-13 0 L-3 -3 Z" fill="#fff2c9"/><circle r="4" fill="#ffd77a"/></g>
+          <circle cx="176" cy="528" r="20" fill="#ffd77a" opacity=".16"/>
+          <text x="118" y="533" text-anchor="end" font-size="10.5" fill="#c9b676" letter-spacing="1.5">you are here</text>
+        </svg>
+      </div>
+      <div class="mocklabel">the road revealed — a half-finished climb, standing there warm</div>
+    </div>
+    <div>
+      <ul class="beats">
+        <li><span class="t">0:00</span><span class="m s">SCRIPT</span>the shipped open kept verbatim; fixed ladder VULPES→LEPUS→CORVUS→CYGNUS→DRACO; fight 1's fuse tuned to never fire</li>
+        <li><span class="t">0:13</span><span class="m g">GUIDE</span>the hand walks STAR; first sound at first tap</li>
+        <li><span class="t">1:00</span><span class="m g">GUIDE</span>THE GOLD THREAD'S ONE LESSON — the authored refill; the thread lights L·I·G·H·T; CAST reads 12 where STAR read 5</li>
+        <li><span class="t">1:25</span><span class="m f">FREE</span>the forge pays a gilded tile; board scripting ends — the third word is the player's own</li>
+        <li><span class="t">1:55</span><span class="m f">FREE</span>first fell → pip 1 takes a breathing star; ribbon, once: "the stars hold your place"</li>
+        <li><span class="t">2:15</span><span class="m s">SCRIPT</span>pinned teaching trio: QUILL / SALVE / SHIELD — damage, sustain, defense</li>
+        <li><span class="t">3:15</span><span class="m g">GUIDE</span>THE FIRST STRIKE, staged safe at full health — and the pinned dew answer in the same breath</li>
+        <li><span class="t">4:45</span><span class="m s">SCRIPT</span>THE ROAD REVEALED — DRACO's eyes, the medallion one fell away, your two gold rungs; the elite herald</li>
+        <li><span class="t">5:00</span><span class="m f">FREE</span>the cliff: fight 3 of 5, engineered to be interrupted — stopping is safe; finishing is tomorrow's reason</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="crit">
+    <div class="vh">The player critic — 7/10</div>
+    Strongest: THE ROAD REVEALED — <q>the only beat in the genre's usual FTUE playbook that casual word games never do
+    … the rare FTUE where the return driver has a face.</q> Weakest: the opening kept "verbatim" without being questioned
+    — <q>13–17 seconds before the player's finger matters, in the single highest-abandon window of the funnel.</q> And
+    "the player's own word fells VULPES at 1:55" is designer fiction unless HP is tuned so any third word kills.
+    <div class="vh">The feasibility critic — 8/10 · true size L</div>
+    <q>Nine-tenths of the cited machinery verifies at the exact line</q> — the chart's entry ride is literally coded as
+    this shot, the trio exists verbatim, quick already ends at DRACO. <span class="flag">The underpriced law:</span>
+    graduation fires only at run end, so a pocketed phone today replays the whole first open over an orphaned checkpoint
+    — <q>the one beat the whole concept exists to create becomes the delete moment.</q> Move graduation to the first
+    checkpoint write; give the abandon door a persist branch; route the CONTINUE door. Also new, not reuse: the road
+    medallion has never seated on the chart, the ribbon is hardwired to the daily sky, and the herald only fires for
+    bosses. <q>An L wearing an M's clothes — and still the best hook-per-line-of-code pitch this flow has seen.</q>
+    <div class="vh">The grafts that fix it</div>
+    <ul class="fix"><li><b>Engineer the 1:55 kill</b> — VULPES ≤19&nbsp;hp so STAR + LIGHT + any legal word fells it, every time.</li>
+    <li><b>Tap-to-skip everything scripted</b> — the reduced-motion paths already are the skip implementations; wire them to input.</li>
+    <li><b>Cut the ride to ~15&nbsp;s, tap-advance</b>; temper first-ascent CORVUS (~0.8×) so the first ELITE is drama, not a rewind loop.</li>
+    <li><b>The medallion gleams on the morning-after door</b> — "a sigil waits · fight 3 of 5": the Zeigarnik pull plus a concrete tomorrow-reward.</li></ul>
+  </div>
+
+  <!-- ====================== VIII ====================== -->
+  <h2>VIII · The Critics' Table</h2>
+  <p class="lede">Twelve critiques, two lenses each. Player scores are harsh by instruction (8+ = "I would personally
+  reinstall tomorrow"); feasibility scores are hook-per-unit-of-work, discounted by risk, with every builds-on claim
+  checked against HEAD.</p>
+  <div class="tablewrap">
+  <table>
+    <tr><th>concept</th><th class="num">player</th><th class="num">feas</th><th>true size</th><th class="num">strings</th><th>its one idea</th><th>its one danger</th></tr>
+    <tr><td><b>THE SKY STRIKES FIRST</b></td><td class="num">7</td><td class="num">7</td><td>L</td><td class="num">0</td><td>the title card as the trophy for your first kill</td><td>every day-two asset lives at minute 9–14</td></tr>
+    <tr><td><b>THE HERALD'S PROMISE</b></td><td class="num">6.5</td><td class="num">8</td><td>full M</td><td class="num">3</td><td>a creature that keeps its word across a day boundary</td><td>the promise is spoken at an instant the player isn't looking</td></tr>
+    <tr><td><b>THE SKY LEANS IN</b></td><td class="num">7</td><td class="num">8</td><td>M (heavy)</td><td class="num">0</td><td>engineered genius — the rig that never shows</td><td>the bottom-half scanner never fires the ladder</td></tr>
+    <tr><td><b>THE WORDLESS ROAD</b></td><td class="num">6.5</td><td class="num">8</td><td>M*</td><td class="num">0</td><td>the summit shown first; the ascent finally heard</td><td>the payload is subliminal without one blink</td></tr>
+    <tr><td><b>THE SKY YOU LIT</b></td><td class="num">7</td><td class="num">7</td><td>L</td><td class="num">2</td><td>a permanent mark — the world remembers you</td><td>the collection's second half isn't in the plan</td></tr>
+    <tr><td><b>THE FIRST ASCENT</b></td><td class="num">7</td><td class="num">8</td><td>L</td><td class="num">2</td><td>a first game that cannot be lost, interrupted on purpose</td><td>the graduation law under it is the real build</td></tr>
+  </table>
+  </div>
+  <p class="sub">* M with the overlay fix; L as written. Notable across all six: <b>zero new Midjourney paintings</b> —
+  every signature moment composes shipped art and procedural textures; the art pipeline never wakes.</p>
+
+  <h3>The seven grafts every critic converged on</h3>
+  <p class="lede">Independent designers, independent critics — the same fixes kept surfacing. These compose with ANY
+  concept above (or with none, as a foundation card of their own):</p>
+  <ul class="sig">
+    <li><b>1 · Pin fight one.</b> VULPES, every day of the week, tuned low enough that the slowest speller fells it by ~2:00. The 2.5× dice roll is the cheapest bug on this page.</li>
+    <li><b>2 · Let the opening listen.</b> Taps during the cinematics accelerate (never dead) — and the first tap arms the audio, so the riser and the arrival chime are finally heard. Dead taps teach "this game doesn't listen" before anything else is taught.</li>
+    <li><b>3 · Put tomorrow inside the window.</b> Every tomorrow-driver the game owns currently sits past minute eight. One wordless cue before 5:00 — a lit bestiary strip, a glinting fifth pip, a named next — for the commuter whose stop arrives mid-fight.</li>
+    <li><b>4 · The run must survive a pocket.</b> Mid-run state persists across an app kill and relaunches into the held fight. Three of six concepts' return drivers are fiction without it.</li>
+    <li><b>5 · Feed the stalled speller.</b> 8–12&nbsp;s without a tap after the hand retires → one viable tile glints once. Wordless, invisible to anyone who doesn't need it, and it saves exactly the player about to leave.</li>
+    <li><b>6 · Split the refusal grammar.</b> Not-a-word crumbles to dust; too-short bounces home. The most frequent negative event in a word game's first night stops being ambiguous — still zero words.</li>
+    <li><b>7 · Skip-lock the first ceremony only.</b> A player's first lighting/trophy/catch cannot hard-cut before ~1.5&nbsp;s — taps accelerate the stagger. Every later ceremony keeps the shipped 380&nbsp;ms skip.</li>
+  </ul>
+
+  <div class="note"><b>The console's read, for what it's worth:</b> the strongest single build is a marriage —
+  <b>THE FIRST ASCENT's shape</b> (the checkpointed ladder, the road revealed, the warm door) wearing <b>THE SKY LEANS
+  IN's feel</b> (the ember minute, the rigged density, the ladder of cues), opened by <b>THE WORDLESS ROAD's lure-tap</b>
+  so the first night is finally heard — with the seven grafts underneath all of it. THE SKY YOU LIT's permanent mark is
+  the best <i>second</i> card: it composes with any winner and gives the bestiary a reason to exist. But that is one
+  read; the chips below are yours.</div>
+
+  <h2>IX · What building it would mean</h2>
+  <ul class="sig">
+    <li><b>Sizes, critic-verified:</b> STRIKES FIRST L · HERALD full-M · LEANS IN M-heavy · WORDLESS ROAD M-with-fixes ·
+    SKY YOU LIT L (M with the scope cut) · FIRST ASCENT L. The seven grafts alone: S–M, and they de-risk every later card.</li>
+    <li><b>The harness is part of the price.</b> tools/ftue-check.mjs (73 checks) pins today's flow beat by beat — every
+    concept rewrites part of its first act and adds beacon states, and the full 14-suite battery re-greens on final bytes
+    per house law. The critics sized this honestly; the cards should too.</li>
+    <li><b>Words cost five.</b> The game ships five languages (en/es/fr/pt/de — the v0.71.0 cut). Every new line is ×5,
+    machine-drafted, needing native review — and the tagline precedent stands: copy that is not live information gets
+    removed, not polished. Three concepts stay at zero strings forever.</li>
+    <li><b>No new paintings anywhere.</b> All six concepts compose shipped MJ art, baked textures and particles. The art
+    pipeline — MJ, art-cut, webp lanes — never wakes. Boot is untouched; every new beat carries a reduced-motion path and
+    a watchdog per ceremony law.</li>
+    <li><b>Order of operations if you bless a direction:</b> the seven grafts first (they stand alone and every concept
+    assumes them), then the winner's skeleton behind <code style="color:var(--gold)">?ftue=1</code> where it can be felt
+    on a device before any law is moved.</li>
+  </ul>
+
+  <h2>X · For Skylar</h2>
+  <p class="lede">Tap a chip per question, add notes where you like, then COPY VERDICTS in the bottom bar and paste the
+  block back to the console.</p>
+  <div id="qs"></div>
+
+  <footer>
+    Designed 2026-10-02 on Skylar's console · game truth v0.111.1, HEAD 8896ac8b, read from ~/DrBango/beta3 · baseline
+    shots captured live this morning (headless Chrome, DPR 3, fresh profile, Firebase blocked) · built from a
+    six-concept panel with adversarial player + feasibility critics — 22 agents, every builds-on claim spot-verified
+    against HEAD, the misses flagged in place · the first-open line: next rev of v0.75.0 THE FIRST OPEN (Skylar's 9/2
+    wordless ride — kept as the skeleton wherever it deserves to be) · nothing here is built — every concept waits on the
+    verdicts above and an explicit go · SkyPilot82 (Skylar's console)
+  </footer>
+</div>
+
+<div class="bar">
+  <span class="cnt"><b id="ruled">0</b> / 8 ruled</span>
+  <span class="barnote">chips + notes save on this device; COPY VERDICTS builds the paste-back block</span>
+  <button class="copy" onclick="copyVerdicts()">COPY VERDICTS</button>
+  <span class="copied" id="copied"></span>
+</div>
+
+<script>
+/* ============ timeline strips ============ */
+const TL = {
+  cold:    [[0,12,'s'],[12,105,'g'],[105,130,'s'],[130,300,'f']],
+  mentor:  [[0,40,'s'],[40,190,'g'],[190,300,'f']],
+  power:   [[0,50,'s'],[50,170,'g'],[170,300,'f']],
+  mystery: [[0,20,'s'],[20,45,'g'],[45,100,'f'],[100,120,'s'],[120,300,'f']],
+  stakes:  [[0,40,'s'],[40,70,'g'],[70,300,'f']],
+  ladder:  [[0,13,'s'],[13,85,'g'],[85,195,'f'],[195,225,'g'],[225,285,'f'],[285,300,'s']],
+};
+const TLC = {s:'#b9a6ff', g:'#e8c76a', f:'#2fe0d0'};
+document.querySelectorAll('.tl').forEach(function(el){
+  const segs = TL[el.dataset.tl]; if(!segs) return;
+  let rects = segs.map(function(sg){
+    const x = sg[0]*2, w = (sg[1]-sg[0])*2;
+    return '<rect x="'+x+'" y="18" width="'+w+'" height="14" rx="3" fill="'+TLC[sg[2]]+'" opacity=".82"/>';
+  }).join('');
+  let ticks='';
+  for(let m=0;m<=5;m++){
+    ticks += '<line x1="'+(m*120)+'" y1="34" x2="'+(m*120)+'" y2="40" stroke="#39406e"/>'
+          +  '<text x="'+(m*120)+'" y="52" font-size="10" fill="#5b6494" text-anchor="'+(m===0?'start':m===5?'end':'middle')+'">'+m+':00</text>';
+  }
+  el.innerHTML = '<svg viewBox="0 0 600 56">'+rects+ticks+'</svg>'
+    + '<div class="tlleg"><span style="background:#b9a6ff"></span>scripted'
+    + '<span style="background:#e8c76a"></span>guided'
+    + '<span style="background:#2fe0d0"></span>free</div>';
+});
+
+/* ============ verdicts ============ */
+const QS=[
+ {id:'q1',t:'THE DIRECTION',d:'Which concept leads the build? (The winner’s grafts ride along either way — see Q2. The console’s read: FIRST ASCENT’s shape wearing LEANS IN’s feel, opened by the ROAD’s lure-tap.)',o:['STRIKES FIRST','HERALD','LEANS IN','WORDLESS ROAD','SKY YOU LIT','FIRST ASCENT']},
+ {id:'q2',t:'THE SEVEN GRAFTS',d:'Pin fight one · let the opening listen · tomorrow inside the window · the run survives a pocket · feed the stalled speller · split the refusal grammar · skip-lock the first ceremony. Ship as their own foundation card first?',o:['ALL SEVEN','PICK — SEE NOTES','HOLD']},
+ {id:'q3',t:'THE OPENING RUNWAY',d:'Today 10–17 seconds of silent, tap-dead cinema precede the first meaningful tap — every player critic named it the number-one churn window. What may taps do during the open?',o:['TAPS ACCELERATE','TAPS HARD-SKIP','KEEP IT SACRED']},
+ {id:'q4',t:'THE FIRST GAME’S SHAPE',d:'Quick-5 evaporates on abandon, takes 8–15 minutes, and DRACO walls a one-sigil newcomer at fight 5. Keep it, checkpoint it (THE FIRST ASCENT’s law rework), or clip it?',o:['KEEP QUICK-5','CHECKPOINTED ASCENT','CLIP TO 3 FIGHTS']},
+ {id:'q5',t:'MAY THE FIRST NIGHT SPEAK',d:'The first open is wordless by your 9/2 law. HERALD wants 3 ribbon lines, SKY YOU LIT 2, FIRST ASCENT 2 — all claiming the live-information bar; every line ships ×5 languages.',o:['STAY WORDLESS','UP TO 3 LINES','WORDS ARE FINE']},
+ {id:'q6',t:'THE TOMORROW-DRIVER',d:'Which return hook do you believe for day two? (They compose — pick the lead.)',o:['THE KEPT PROMISE','THE LIT SKY','THE WARM DOOR','THE CHIP ALONE']},
+ {id:'q7',t:'FIGHT ONE',d:'The 2.5× dice roll — VULPES 30hp vs URSA 76hp on a first open. All six designers pinned it independently.',o:['PIN VULPES','KEEP THE DICE']},
+ {id:'q8',t:'THE FIRST SOUND',d:'The whole opening is silent until the first tap (WebAudio law) — the riser and arrival chime have never been heard on a true first open. The lure-tap fixes it with ~20 lines.',o:['LURE TAP — HEAR THE RISE','KEEP THE SILENT RIDE']}
+];
+const VKEY='ssFirstNight.v1';
+let V={};try{V=JSON.parse(localStorage.getItem(VKEY)||'{}')}catch(e){}
+function esc(s){return s.replace(/"/g,'&quot;')}
+function saveV(){try{localStorage.setItem(VKEY,JSON.stringify(V))}catch(e){}
+  let n=0;QS.forEach(function(q){if(V[q.id])n++});
+  document.getElementById('ruled').textContent=n;}
+(function(){
+  let h='';
+  QS.forEach(function(q,i){
+    h+='<div class="q"><div class="qt"><b>'+(i+1)+'</b> · '+q.t+'</div><div class="qd">'+q.d+'</div><div class="chips">'
+     +q.o.map(function(o){return '<button class="chip" data-q="'+q.id+'" data-o="'+esc(o)+'">'+o+'</button>'}).join('')
+     +'</div><input class="qnote" data-q="'+q.id+'" placeholder="notes…"></div>';
+  });
+  document.getElementById('qs').innerHTML=h;
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.onclick=function(){
+      const q=c.dataset.q;V[q]=c.dataset.o;
+      document.querySelectorAll('.chip[data-q="'+q+'"]').forEach(function(x){x.classList.toggle('on',x===c)});
+      saveV();
+    };
+    if(V[c.dataset.q]===c.dataset.o)c.classList.add('on');
+  });
+  document.querySelectorAll('.qnote').forEach(function(n){
+    n.value=V['note_'+n.dataset.q]||'';
+    n.addEventListener('input',function(){V['note_'+n.dataset.q]=n.value;saveV()});
+  });
+  saveV();
+})();
+function copyVerdicts(){
+  let t='THE FIRST NIGHT verdicts — 2026-10-02\n';
+  QS.forEach(function(q,i){
+    t+=(i+1)+') '+q.t+': '+(V[q.id]||'—')+(V['note_'+q.id]?(' — '+V['note_'+q.id]):'')+'\n';
+  });
+  function done(){document.getElementById('copied').textContent='copied ✓';setTimeout(function(){document.getElementById('copied').textContent=''},2000)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){prompt('Copy:',t)})}
+  else prompt('Copy:',t);
+}
+</script>
+</body>
+</html>
